@@ -44,6 +44,5 @@ router.put("/edit-user", authMiddleware, updateAdmin);
 // Block User
 router.put("/block-user/:id", authMiddleware, isAdmin, blockUser);
 router.put("/unblock-user/:id", authMiddleware, isAdmin, unBlockUser);
-// refresh token 
-router.put("/refresh" , handleRefreshToken)
+
 module.exports = router;
