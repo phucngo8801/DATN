@@ -12,12 +12,14 @@ const {
   updateAdmin,
   handleRefreshToken,
   logout,
+  updatePassword,
 } = require("../controller/userController");
 const { authMiddleware, isAdmin } = require("../middlewares/authMiddleware");
 
 // Dang ky
 router.post("/register", createUser);
-
+// update  password 
+router.put("/password", authMiddleware, updatePassword)
 // login
 router.post("/login", loginUser);
 

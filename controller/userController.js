@@ -215,6 +215,22 @@ const deleteUserById = asyncHandler(async (req, res) => {
   }
 });
 
+// update password
+const updatePassword = asyncHandler(async (req, res) =>{
+  const { _id } = req.user;
+  const password = req.body;
+  validateMongodbId(_id);
+  const user = await User.findById(_id);
+  if (password) {
+    user.password = password;
+    const updatePassword = await user.save();
+    res.json(updatedPassWord);
+
+  }else{
+    res.json(user);
+  }
+})
+
 module.exports = {
   createUser,
   loginUser,
@@ -227,4 +243,5 @@ module.exports = {
   unBlockUser,
   handleRefreshToken,
   logout,
+  updatePassword,
 };
